@@ -74,6 +74,10 @@ public class TicketList {
     }
 
     public Duration getTimePercentile (String originName, String destinationName, int percentile)  {
+        if (percentile < 0 || percentile > 100){
+            System.out.println("The percentile should be between 0 and 100");
+            System.exit(5);
+        }
         List<Minutes> ticketsByTime = new ArrayList<Minutes>();
         for (Ticket ticket : tickets) {
             if (ticket.getOriginName().equals(originName) && ticket.getOriginName().equals(destinationName)) {
